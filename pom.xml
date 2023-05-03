@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.advanced_security</groupId>
+    <artifactId>monorepo_sample</artifactId>
+    <version>0.0.0</version>
+    <packaging>pom</packaging>
+    <name>Monorepo for testing</name>
+    <modules>
+        <module>project1</module>
+        <module>project2</module>
+        <module>project3</module>
+        <module>project4</module>
+    </modules>
+    <properties>
+        <java.version>18</java.version>
+    </properties>
+</project>
