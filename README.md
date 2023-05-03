@@ -1,5 +1,7 @@
 # Monorepo workflow for Code Scanning
 
+> ℹ️ This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
+
 This sample Actions workflow shows you how to enable filtering results from different Code Scanning runs in the GitHub UI using a workaround.
 
 This is useful when dealing with monorepos that have code for several different projects in the same repository. You can use this workflow modification to mark each project with a unique scanning tool name, and then filter the results in the GitHub Security tab by that tool to only show results for a specific project.
@@ -9,6 +11,8 @@ The SARIF is edited before upload to Code Scanning, changing the tool name. Code
 The tool name can then be used to filter results in the web user interface:
 
 ![Filtering results by tool name](./filter-by-tool-name.png)
+
+> ℹ️ This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
 
 ## Usage
 
@@ -63,3 +67,26 @@ The `analyze` step has some changes to ensure that the CodeQL results are displa
 ### Full example workflow file
 
 See [`codeql_sample_workflow.yml`](codeql_sample_workflow.yml).
+
+This repo also contains a very basic monorepo to show it in action on a "real" repo.
+
+## Requirements
+
+* GitHub Actions
+* GitHub Advanced Security
+
+## License
+
+This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](LICENSE) for the full terms.
+
+## Maintainers
+
+See [CODEOWNERS](CODEOWNERS) for the list of maintainers.
+
+## Support
+
+See the [SUPPORT](SUPPORT.md) file.
+
+## Background
+
+See the [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [SUPPORT](SUPPORT.md), [CODE OF CONDUCT](CODE_OF_CONDUCT.md) and [PRIVACY](PRIVACY.md) files for more information.
