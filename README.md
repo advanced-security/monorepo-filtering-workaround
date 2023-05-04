@@ -74,8 +74,9 @@ This repo also contains a very basic monorepo to show it in action on a "real" r
 
 ## Requirements
 
-* GitHub Actions
-* GitHub Advanced Security
+* GitHub Actions with `jq` on the runner (included by default on the standard GitHub hosted runners)
+* GitHub Advanced Security for private GitHub Enterprise repositories, or a public repository
+* GitHub.com or GitHub Enterprise Server
 
 ## License
 
