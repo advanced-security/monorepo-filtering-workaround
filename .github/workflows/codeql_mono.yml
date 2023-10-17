@@ -35,6 +35,15 @@ jobs:
           - language: 'javascript'
             build-command: ${{ null }}
             directory: 'project5'
+            config: |
+              paths:
+                - project5
+          - language: 'javascript'
+            build-command: ${{ null }}
+            directory: 'project6'
+            config: |
+              paths:
+                - project6
 
     steps:
     - name: Checkout repository
@@ -45,6 +54,7 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         queries: security-extended,security-and-quality
+        config: ${{ matrix.config }}
 
     - name: Run build command for subproject
       run: ${{ matrix.build-command }}
