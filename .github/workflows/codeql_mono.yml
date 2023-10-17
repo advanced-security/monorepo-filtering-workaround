@@ -44,7 +44,6 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-        source-root: ${{ matrix.directory }}
         queries: security-extended,security-and-quality
 
     - name: Run build command for subproject
