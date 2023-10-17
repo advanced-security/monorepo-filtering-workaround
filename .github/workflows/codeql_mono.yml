@@ -21,16 +21,16 @@ jobs:
       matrix:
         include:
           - language: 'java'
-            build-command: 'mvn compile -pl project1 -B'
+            build-command: 'mvn compile -B'
             directory: 'project1'
           - language: 'java'
-            build-command: 'mvn compile -pl project2 -B'
+            build-command: 'mvn compile -B'
             directory: 'project2'
           - language: 'java'
-            build-command: 'mvn compile -pl project3 -B'
+            build-command: 'mvn compile -B'
             directory: 'project3'
           - language: 'java'
-            build-command: 'mvn compile -pl project4 -B'
+            build-command: 'mvn compile -B'
             directory: 'project4'
           - language: 'javascript'
             build-command: ${{ null }}
@@ -49,6 +49,7 @@ jobs:
 
     - name: Run build command for subproject
       run: ${{ matrix.build-command }}
+      working-directory: ${{ matrix.directory }}
       if: ${{ matrix.build-command }}
 
     - name: Perform CodeQL Analysis
