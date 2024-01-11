@@ -1,0 +1,83 @@
+name: "CodeQL Analysis"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: 'java'
+            build-command: 'mvn compile -B'
+            directory: 'project1'
+          - language: 'java'
+            build-command: 'mvn compile -B'
+            directory: 'project2'
+          - language: 'java'
+            build-command: 'mvn compile -B'
+            directory: 'project3'
+          - language: 'java'
+            build-command: 'mvn compile -B'
+            directory: 'project4'
+          - language: 'javascript'
+            build-command: ${{ null }}
+            directory: 'project5'
+            config: |
+              paths:
+                - project5
+          - language: 'javascript'
+            build-command: ${{ null }}
+            directory: 'project6'
+            config: |
+              paths:
+                - project6
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-extended,security-and-quality
+        config: ${{ matrix.config }}
+
+    - name: Run build command for subproject
+      run: ${{ matrix.build-command }}
+      working-directory: ${{ matrix.directory }}
+      if: ${{ matrix.build-command }}
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: False
+        output: sarif-results
+      env:
+        CODEQL_ACTION_EXTRA_OPTIONS: '{"database":{"analyze":["--sarif-add-snippets","--sarif-add-query-help","--sarif-group-rules-by-pack"]}}'
+
+    - name: Rename CodeQL tool
+      run: |
+        jq ".runs[0].tool.driver.name = \"CodeQL-${WORKFLOW_TAG}-${{matrix.language}}\"" sarif-results/${{ matrix.language }}.sarif > sarif-results/${{ matrix.language }}-edited.sarif
+      env:
+        WORKFLOW_TAG: ${{ matrix.directory }}
+
+    - name: Upload SARIF
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: sarif-results/${{ matrix.language }}-edited.sarif
