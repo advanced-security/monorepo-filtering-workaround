@@ -1,6 +1,8 @@
 # Monorepo workflow for GitHub Advanced Security Code Scanning
 
-> ℹ️ This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
+> [!NOTE] This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
+
+> [!WARNING] This method renames the CodeQL tool in the results, which breaks CodeQL Autofix and may affect other features of Code Scanning
 
 This sample GitHub Actions workflow shows you how to enable filtering results from different GitHub Advanced Security Code Scanning runs in the GitHub UI using a workaround.
 
@@ -14,7 +16,9 @@ The unique tool name can then be used to filter results in the web user interfac
 
 ![Filtering results by tool name](./filter-by-tool-name.png)
 
-> ℹ️ This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
+> [!NOTE] This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
+
+> [!WARNING] This method renames the CodeQL tool in the results, which breaks CodeQL Autofix and may affect other features of Code Scanning
 
 ## Usage
 
