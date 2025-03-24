@@ -4,7 +4,7 @@
 > This is an _unofficial_ project created by Field Security Services, and is not officially supported by GitHub.
 
 > [!WARNING]
-> This method renames the CodeQL tool in the results, which breaks CodeQL Autofix and may affect other features of Code Scanning
+> This method renames the CodeQL tool in the results, which breaks CodeQL Autofix and may affect other features of Code Scanning. See: [known limitations](https://github.com/advanced-security/monorepo-filtering-workaround/issues/2).
 
 This sample GitHub Actions workflow shows you how to enable filtering results from different GitHub Advanced Security Code Scanning runs in the GitHub UI using a workaround.
 
